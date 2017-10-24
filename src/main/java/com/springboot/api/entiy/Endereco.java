@@ -17,27 +17,28 @@ public class Endereco {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private Long idEndereco;
 	
-	@Column(name = "CEP", nullable = false)
+	@Column(name = "CEP", nullable = false, length = 10)
 	private String cep;
 	
 	@Column(name = "LOGRADOURO", nullable = false)
 	private String logradouro;
 	
-	@Column(name = "BAIRRO", nullable = false)
+	@Column(name = "BAIRRO", nullable = false, length = 120)
 	private String bairro;
 	
-	@Column(name = "NUMERO", nullable = false)
+	@Column(name = "NUMERO", nullable = false, length = 10)
 	private String numero;
 	
-	@Column(name = "COMPLEMENTO", nullable = false)
+	@Column(name = "COMPLEMENTO", nullable = false, length = 120)
 	private String complemento;
 	
-	@Column(name = "CIDADE", nullable = false)
+	@Column(name = "CIDADE", nullable = false, length = 120)
 	private String cidade;
 	
-	@Column(name = "ESTADO", nullable = false)
+	@Column(name = "ESTADO", nullable = false, length = 120)
 	private String estado;
 	
 	@Column(name = "DATA_CADASTRO", nullable = false)

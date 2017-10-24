@@ -8,7 +8,7 @@ import com.springboot.api.entiy.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 	@Transactional(readOnly = true)
-	Usuario findByCpf(String cpf);
+	Usuario findByCpf(String cpf); 
 	
 	@Transactional(readOnly = true)
 	Usuario findByEmail(String email);

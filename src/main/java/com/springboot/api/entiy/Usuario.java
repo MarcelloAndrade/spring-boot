@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -25,21 +26,22 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private Long idUsuario;
 
 	@Column(name = "NOME", nullable = false)
 	private String nome;
 
-	@Column(name = "CPF", nullable = false)
+	@Column(name = "CPF", nullable = false, length = 15)
 	private String cpf;
 
-	@Column(name = "EMAIL", nullable = false)
+	@Column(name = "EMAIL", nullable = false, length = 120)
 	private String email;
 
-	@Column(name = "SENHA", nullable = false)
+	@Column(name = "SENHA", nullable = false, length = 18)
 	private String senha;
 
-	@Column(name = "DATA_NASCIMENTO")
+	@Column(name = "DATA_NASCIMENTO", nullable = false)
 	private Date dataNascimento;
 
 	@Column(name = "DATA_CADASTRO", nullable = false)
@@ -49,14 +51,15 @@ public class Usuario {
 	private Date dataAtualizacao;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "PERFIL", nullable = false)
+	@Column(name = "PERFIL", nullable = false, length = 20)
 	private EnumPerfil perfil;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "STATUS_ATIVO", nullable = false)
+	@Column(name = "STATUS_ATIVO", nullable = false, length = 5)
 	private EnumStatusAtivo statusAtivo;
 
-	@OneToOne(mappedBy = "tb_usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="idEndereco")
 	private Endereco endereco;
 
 	@PrePersist
