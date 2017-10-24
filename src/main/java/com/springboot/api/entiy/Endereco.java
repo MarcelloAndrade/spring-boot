@@ -38,7 +38,7 @@ public class Endereco {
 	@Column(name = "CIDADE", nullable = false, length = 120)
 	private String cidade;
 	
-	@Column(name = "ESTADO", nullable = false, length = 120)
+	@Column(name = "ESTADO", nullable = false, length = 3)
 	private String estado;
 	
 	@Column(name = "DATA_CADASTRO", nullable = false)
@@ -137,5 +137,12 @@ public class Endereco {
 
 	public void setDataAtualizacao(Date dataAtualizacao) {
 		this.dataAtualizacao = dataAtualizacao;
+	}
+
+	@Override
+	public String toString() {
+		return "Endereco [idEndereco=" + idEndereco + ", cep=" + cep + ", logradouro=" + logradouro + ", bairro="
+				+ bairro + ", numero=" + numero + ", complemento=" + complemento + ", cidade=" + cidade + ", estado="
+				+ estado + ", dataCadastro=" + dataCadastro + ", dataAtualizacao=" + dataAtualizacao + "]";
 	}
 }

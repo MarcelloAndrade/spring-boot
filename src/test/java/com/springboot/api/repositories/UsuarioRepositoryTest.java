@@ -29,7 +29,7 @@ public class UsuarioRepositoryTest {
 	private static final String EMAIL = "test@test";
 
 	@Before
-	public void setUp() throws Exception {
+	public void before() throws Exception {
 		Usuario usuario = new Usuario();
 		usuario.setNome("Marcello Andrade");
 		usuario.setCpf(CPF);
@@ -41,7 +41,7 @@ public class UsuarioRepositoryTest {
 	}
 	
 	@After
-    public final void tearDown() { 
+    public final void after() { 
 		this.usuarioRepository.deleteAll();
 	}
 

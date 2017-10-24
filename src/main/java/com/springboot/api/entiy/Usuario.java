@@ -38,7 +38,7 @@ public class Usuario {
 	@Column(name = "EMAIL", nullable = false, length = 120)
 	private String email;
 
-	@Column(name = "SENHA", nullable = false, length = 18)
+	@Column(name = "SENHA", nullable = false)
 	private String senha;
 
 	@Column(name = "DATA_NASCIMENTO", nullable = false)
@@ -61,7 +61,7 @@ public class Usuario {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="idEndereco")
 	private Endereco endereco;
-
+	
 	@PrePersist
 	public void prePersist() {
 		Date date = new Date();
@@ -161,6 +161,14 @@ public class Usuario {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", senha="
+				+ senha + ", dataNascimento=" + dataNascimento + ", dataCadastro=" + dataCadastro + ", dataAtualizacao="
+				+ dataAtualizacao + ", perfil=" + perfil + ", statusAtivo=" + statusAtivo + ", endereco=" + endereco
+				+ "]";
 	}
 
 }
