@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.springboot.api.enums.EnumPerfil;
 import com.springboot.api.enums.EnumStatusAtivo;
@@ -32,7 +35,7 @@ public class Usuario {
 	@Column(name = "NOME", nullable = false)
 	private String nome;
 
-	@Column(name = "CPF", nullable = false, length = 15)
+	@Column(name = "CPF", nullable = false, length = 11)
 	private String cpf;
 
 	@Column(name = "EMAIL", nullable = false, length = 120)
@@ -42,6 +45,7 @@ public class Usuario {
 	private String senha;
 
 	@Column(name = "DATA_NASCIMENTO", nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 
 	@Column(name = "DATA_CADASTRO", nullable = false)
@@ -59,7 +63,7 @@ public class Usuario {
 	private EnumStatusAtivo statusAtivo;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="idEndereco")
+	@JoinColumn(name="ID_ENDERECO", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "FK_USUARIO_X_ENDERECO"))
 	private Endereco endereco;
 	
 	@PrePersist

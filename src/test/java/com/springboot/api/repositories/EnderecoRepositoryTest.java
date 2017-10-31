@@ -48,6 +48,5 @@ public class EnderecoRepositoryTest {
 		Endereco endereco = this.enderecoRepository.findOne(idEndereco);
 		assertEquals(CEP, endereco.getCep());
 	}
-	
 }
 
